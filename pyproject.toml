@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-memory-core"
+version = "0.1.0"
+description = "Three-layer persistent memory system (Markdown + ChromaDB vectors + NetworkX graph) for AI agents"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Jake Bennett", email = "jakebot2ops@gmail.com" },
+]
+keywords = ["ai", "agents", "memory", "chromadb", "knowledge-graph", "langchain", "crewai"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "networkx>=3.0",
+]
+
+[project.optional-dependencies]
+langchain = ["langchain-core>=0.1.0"]
+crewai = ["crewai>=0.1.0"]
+all = ["langchain-core>=0.1.0", "crewai>=0.1.0"]
+dev = ["pytest>=7.0", "pytest-cov"]
+
+[project.urls]
+Homepage = "https://github.com/Jakebot-ops/agent-memory-core"
+Repository = "https://github.com/Jakebot-ops/agent-memory-core"
+Issues = "https://github.com/Jakebot-ops/agent-memory-core/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_memory_core"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
