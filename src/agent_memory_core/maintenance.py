@@ -7,6 +7,7 @@ re-indexing of all three memory layers.
 
 from __future__ import annotations
 
+import os
 import re
 from datetime import date, datetime, timedelta
 from typing import Any, Callable, Dict, List, Optional
@@ -44,7 +45,7 @@ class MaintenanceRunner:
         for i in range(days_back):
             target = today - timedelta(days=i)
             log_file = f"{target.isoformat()}.md"
-            log_path = self.md.memory_dir + "/" + log_file
+            log_path = os.path.join(self.md.memory_dir, log_file)
 
             chunks = MarkdownStore.parse_markdown(log_path, self.md.base_dir)
             if not chunks:
